@@ -79,9 +79,7 @@ date_str = [x.strftime("%d-%m-%Y") for x in date_list]
 
 
 temp_user_agent = UserAgent()
-browser_header = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
-}
+browser_header = {"User-Agent": temp_user_agent.random}
 
 
 final_df = None
