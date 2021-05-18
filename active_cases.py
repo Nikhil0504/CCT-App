@@ -7,7 +7,8 @@ st.title("COVID-19 Cases in India")
 st.info("This is usually pretty updated but it depends on MoHFW")
 st.markdown("The dashboard will visualize the Covid-19 Situation in India")
 st.markdown(
-    "Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment."
+    "Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus. \
+    Most people infected with the COVID-19 virus will experience mild to moderate respiratory illness and recover without requiring special treatment."
 )
 st.sidebar.title("Visualization Selector")
 st.sidebar.markdown("Select the Charts/Plots accordingly:")
@@ -30,7 +31,7 @@ rename_mapping = {
 }
 b.rename(columns=rename_mapping, inplace=True)
 
- select = st.sidebar.selectbox(
+select = st.sidebar.selectbox(
     "Cases type",
     ["", "Active Cases", "Recovered Cases", "Deceased Cases", "Total Infected Cases"],
     key="3",
@@ -46,21 +47,21 @@ def table(b):
     return T
 
 
- if select == "":
+if select == "":
     st.table(b)
 
- if select == "Active Cases":
+if select == "Active Cases":
     table(b)
     st.bar_chart(b["Active Cases"])
 
- if select == "Recovered Cases":
+if select == "Recovered Cases":
     table(b)
     st.bar_chart(b["Active Cases"])
 
- if select == "Deceased Cases":
+if select == "Deceased Cases":
     table(b)
     st.bar_chart(b["Deceased Cases"])
 
- if select == "Total Infected Cases":
+if select == "Total Infected Cases":
     table(b)
     st.bar_chart(b["Total Infected Cases"])
