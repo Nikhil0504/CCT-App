@@ -52,21 +52,21 @@ st.bar_chart(b["Active Cases"])
 st.bar_chart(b["Recovered Cases"])
 st.bar_chart(b["Deceased Cases"])
 st.bar_chart(b["Total Infected Cases"])
-"""if select == "":
-    st.table(b)
+#if select == "":
+#    st.table(b)
 
-if select == "Active Cases":
-    table(b)
-    st.bar_chart(b["Active Cases"])
+#if select == "Active Cases":
+#    table(b)
+#    st.bar_chart(b["Active Cases"])
 
-if select == "Recovered Cases":
-    table(b)
-    st.bar_chart(b["Recovered Cases"])
+#if select == "Recovered Cases":
+#    table(b)
+#    st.bar_chart(b["Recovered Cases"])
 
-if select == "Deceased Cases":
-    table(b)
-    st.bar_chart(b["Deceased Cases"])
+#if select == "Deceased Cases":
+#    table(b)
+#    st.bar_chart(b["Deceased Cases"])
 
-if select == "Total Infected Cases":
-    table(b)
-    st.bar_chart(b["Total Infected Cases"])"""
+#if select == "Total Infected Cases":
+#    table(b)
+#    st.bar_chart(b["Total Infected Cases"])
