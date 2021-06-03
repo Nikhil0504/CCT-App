@@ -32,6 +32,11 @@ def filter_capacity(df, col, value):
     return df_temp
 
 
+@st.cache(allow_output_mutation=True)
+def Pageviews():
+    return []
+
+
 mapping_df = load_mapping()
 
 rename_mapping = {
@@ -56,11 +61,12 @@ valid_states = list(np.unique(mapping_df["state_name"].values))
 
 left_column_1, center_column_1, right_column_1 = st.beta_columns(3)
 with left_column_1:
-    numdays = st.slider("Select Date Range", 0, 100, 3)
+    numdays = st.slider("Select Date Range", 1, 100, 1)
 
 with center_column_1:
-    state_input = st.selectbox("Select State", valid_states)
-
+    state_input = st.selectbox("Select State", ["Tamil Nadu"] + valid_states)
+    if state_input != "":
+        mapping_df = filter_column(mapping_df, "state_name", state_input)
 
 mapping_dict = pd.Series(
     mapping_df["district id"].values, index=mapping_df["district name"].values
@@ -79,9 +85,7 @@ date_str = [x.strftime("%d-%m-%Y") for x in date_list]
 
 
 temp_user_agent = UserAgent()
-browser_header = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
-}
+browser_header = {"User-Agent": temp_user_agent.random}
 
 
 final_df = None
