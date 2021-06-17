@@ -11,5 +11,7 @@ You can test these apps with `streamlit` in `python`.
 
 NOTE: This app only works with Indian IP addresses.
 
+Now you can access the app here: https://share.streamlit.io/nikhil0504/cct-app/main/app.py
+
 # Streamlit
 If the app doesn't open you can open it with Local URL: http://localhost:8501 Network URL: http://192.168.1.7:8501
