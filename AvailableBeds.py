@@ -69,13 +69,13 @@ async def on_message(message):
             if flag == False:
                 if i["DISTRICT"].replace(" ", "").lower() != temp[2].lower():
                     continue
-            embed = discord.Embed(name=i["HOSPITAL_NAME"], url=i["LOCATION"])
+            embed = discord.Embed(name=i["HOSPITAL_NAME"])
             for j in i:
                 embed.add_field(name=j, value=i[j])
             await message.channel.send(embed=embed)
 
 
-client.run(token)
+client.run("ODU0MTc4NDA4OTM3Njg1MDEz.YMgJog.LgmQavCKowier0_RBRn42Rs-SqM")
 
 while True:
     time.sleep(7200)
