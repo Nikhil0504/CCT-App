@@ -24,7 +24,9 @@ def districts(message, state, api):
 
     temp = district_list[state]
     embed = discord.Embed(
-        title="Select a district", description="Format: -data [state] [district]"
+        title="Select a district",
+        description="Format: -data [state] [district]",
+        url=discord.embeds.EmptyEmbed,
     )
 
     for i in temp:
