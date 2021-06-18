@@ -75,7 +75,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
 
-client.run("ODU0MTc4NDA4OTM3Njg1MDEz.YMgJog.LgmQavCKowier0_RBRn42Rs-SqM")
+client.run(token)
 
 while True:
     time.sleep(7200)
