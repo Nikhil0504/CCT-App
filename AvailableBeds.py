@@ -1,4 +1,4 @@
-import discord, requests, time, os
+import discord, json, time, os
 
 token = os.getenv("DISCORD_TOKEN")
 client = discord.Client()
@@ -12,21 +12,18 @@ async def on_ready():
 data = {}
 district_list = {}
 
+temp = set()
+data["tamilnadu"] = json.load(open("beds.json"))
+for i in data["tamilnadu"]:
+ 	temp.add(i["District"])
+district_list["tamilnadu"] = sorted(list(temp))
 
-def districts(message, state, api):
 
-    if state not in district_list:
-        temp = set()
-        data[state] = requests.get(api).json()
-        for i in data[state]:
-            temp.add(i["DISTRICT"])
-        district_list[state] = sorted(list(temp))
-
+def districts(message, state):
     temp = district_list[state]
     embed = discord.Embed(
         title="Select a district",
-        description="Format: -data [state] [district]",
-        url=discord.embeds.EmptyEmbed,
+        description="Format: -data [state] [district]"
     )
 
     for i in temp:
@@ -44,17 +41,7 @@ async def on_message(message):
         await message.channel.send(
             embed=districts(
                 message,
-                "tamilnadu",
-                "https://api.covidbedsindia.in/v1/storages/6089820e03eef3b588d05a6d/Tamil%20Nadu",
-            )
-        )
-
-    elif message.content.lower() == "-andhrapradesh":
-        await message.channel.send(
-            embed=districts(
-                message,
-                "andhrapradesh",
-                "https://api.covidbedsindia.in/v1/storages/608982e003eef31f34d05a71/Andhra%20Pradesh",
+                "tamilnadu"
             )
         )
 
@@ -67,17 +54,12 @@ async def on_message(message):
 
         for i in data[temp[1]]:
             if flag == False:
-                if i["DISTRICT"].replace(" ", "").lower() != temp[2].lower():
+                if i["District"].replace(" ", "").lower() != temp[2].lower():
                     continue
-            embed = discord.Embed(name=i["HOSPITAL_NAME"])
+            embed = discord.Embed(name=i["Institution"])
             for j in i:
                 embed.add_field(name=j, value=i[j])
             await message.channel.send(embed=embed)
 
 
 client.run(token)
-
-while True:
-    time.sleep(7200)
-    district_list = {}
-    data = {}
