@@ -4,3 +4,4 @@ pandas
 requests
 fake-useragent
 htbuilder
+discord.py
