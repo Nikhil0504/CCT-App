@@ -18,7 +18,7 @@ st.set_page_config(
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def load_mapping():
-    df = pd.read_csv("district_mapping.csv")
+    df = pd.read_csv("apps\district_mapping.csv")
     return df
 
 
