@@ -7,8 +7,10 @@ from streamlit_folium import folium_static
 
 # import numpy as np
 
+PATH = "apps/maps/states.geojson"
+
 cases = pd.read_csv("https://api.covid19india.org/csv/latest/state_wise.csv")
-jeojson_file = json.load(open("apps\maps\states_india.json"))
+jeojson_file = json.load(open(PATH))
 
 new_cases = cases.drop([0, 31])
 
@@ -72,7 +74,7 @@ with left:
     ).add_to(m)
 
     folium.features.GeoJson(
-        "states_india.geojson",
+        PATH,
         name="LSOA Code",
         popup=folium.features.GeoJsonPopup(
             fields=["st_nm", "state_code"], alias=["State"]

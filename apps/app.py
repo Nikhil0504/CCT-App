@@ -7,6 +7,7 @@ import streamlit as st
 from copy import deepcopy
 from fake_useragent import UserAgent
 
+PATH = "apps/district_mapping.csv"
 
 st.set_page_config(
     layout="wide",
@@ -18,7 +19,7 @@ st.set_page_config(
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def load_mapping():
-    return pd.read_csv("apps\district_mapping.csv")
+    return pd.read_csv(PATH)
 
 
 def filter_column(df, col, value):
