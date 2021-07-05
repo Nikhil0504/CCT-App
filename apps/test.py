@@ -7,9 +7,8 @@ from streamlit_folium import folium_static
 
 # import numpy as np
 
-
 cases = pd.read_csv("https://api.covid19india.org/csv/latest/state_wise.csv")
-jeojson_file = json.load(open("apps\maps\states_india.geojson"))
+jeojson_file = json.load(open("apps\maps\states_india.json"))
 
 new_cases = cases.drop([0, 31])
 

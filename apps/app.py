@@ -18,18 +18,15 @@ st.set_page_config(
 
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def load_mapping():
-    df = pd.read_csv("apps\district_mapping.csv")
-    return df
+    return pd.read_csv("apps\district_mapping.csv")
 
 
 def filter_column(df, col, value):
-    df_temp = deepcopy(df.loc[df[col] == value, :])
-    return df_temp
+    return deepcopy(df.loc[df[col] == value, :])
 
 
 def filter_capacity(df, col, value):
-    df_temp = deepcopy(df.loc[df[col] > value, :])
-    return df_temp
+    return deepcopy(df.loc[df[col] > value, :])
 
 
 @st.cache(allow_output_mutation=True)
@@ -118,10 +115,9 @@ for input_date in date_str:
                         "fee_type",
                     ]
                 ]
-                if final_df is not None:
-                    final_df = pd.concat([final_df, df])
-                else:
-                    final_df = deepcopy(df)
+                final_df = (
+                    pd.concat([final_df, df]) if final_df is not None else deepcopy(df)
+                )
         else:
             st.error("No rows in the data Extracted from the API")
 
