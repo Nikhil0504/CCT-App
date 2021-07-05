@@ -5,3 +5,6 @@ requests
 fake-useragent
 htbuilder
 discord.py
+folium
+plotly
+streamlit-folium
