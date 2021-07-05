@@ -1,2 +1,2 @@
-web: sh setup.sh && streamlit run --server.port $PORT active_cases.py
+web: sh setup.sh && streamlit run --server.port $PORT apps/active_cases.py
 worker: python AvailableBeds.py
