@@ -51,46 +51,46 @@ choice_selected = st.selectbox("Select Choice ", choice)
 
 left, right = st.beta_columns(2)
 
+
+m = folium.Map(
+    location=[23.47, 77.94],
+    tiles="CartoDB positron",
+    name="Map",
+    zoom_start=5,
+    attr="My Data Attribution",
+    max_bounds=True,
+)
+
+chloropleth = folium.Choropleth(
+    geo_data=jeojson_file,
+    name="choropleth",
+    data=new_cases,
+    columns=["id", choice_selected],
+    key_on="feature.properties.state_code",
+    fill_color="Spectral",
+    fill_opacity=0.7,
+    line_opacity=0.3,
+    legend_name=choice_selected + " Cases",
+).add_to(m)
+
+folium.features.GeoJson(
+    PATH,
+    name="LSOA Code",
+    popup=folium.features.GeoJsonPopup(fields=["st_nm", "state_code"], alias=["State"]),
+).add_to(m)
+
+folium_static(m)
+
+
 with left:
-    m = folium.Map(
-        location=[23.47, 77.94],
-        tiles="CartoDB positron",
-        name="Map",
-        zoom_start=5,
-        attr="My Data Attribution",
-        max_bounds=True,
-    )
-
-    chloropleth = folium.Choropleth(
-        geo_data=jeojson_file,
-        name="choropleth",
-        data=new_cases,
-        columns=["id", choice_selected],
-        key_on="feature.properties.state_code",
-        fill_color="Spectral",
-        fill_opacity=0.7,
-        line_opacity=0.3,
-        legend_name=choice_selected + " Cases",
-    ).add_to(m)
-
-    folium.features.GeoJson(
-        PATH,
-        name="LSOA Code",
-        popup=folium.features.GeoJsonPopup(
-            fields=["st_nm", "state_code"], alias=["State"]
-        ),
-    ).add_to(m)
-
-    folium_static(m)
-
-with right:
-    st.dataframe(new_cases[["State", choice_selected]], height=500)
+    st.dataframe(new_cases[["State", choice_selected]])
     # log_chart = st.checkbox("Show the charts in a logarithmic scale")
     # if log_chart:
     #     st.bar_chart(np.log(new_cases[choice]))
     # else:
     #     st.bar_chart(new_cases[choice])
 
+with right:
     fig = px.histogram(
         new_cases,
         x="State",
