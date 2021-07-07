@@ -81,7 +81,7 @@ with left:
         ),
     ).add_to(m)
 
-    folium_static(m, width=1000, height=1000)
+    folium_static(m)
 
 with right:
     st.dataframe(new_cases[["State", choice_selected]], height=500)
