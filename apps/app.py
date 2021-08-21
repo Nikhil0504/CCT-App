@@ -57,7 +57,7 @@ st.info(
 
 valid_states = list(np.unique(mapping_df["state_name"].values))
 
-left_column_1, center_column_1, right_column_1 = st.beta_columns(3)
+left_column_1, center_column_1, right_column_1 = st.columns(3)
 with left_column_1:
     numdays = st.slider("Select Date Range", 1, 100, 1)
 
@@ -133,7 +133,7 @@ if (final_df is not None) and (len(final_df)):
         right_column_2,
         right_column_2a,
         right_column_2b,
-    ) = st.beta_columns(5)
+    ) = st.columns(5)
     with left_column_2:
         valid_pincodes = list(np.unique(final_df["Pincode"].values))
         pincode_inp = st.selectbox("Select Pincode", [""] + valid_pincodes)
